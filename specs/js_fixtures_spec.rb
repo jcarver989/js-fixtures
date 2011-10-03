@@ -6,14 +6,6 @@ require 'rspec'
 
 describe "Html fixtures" do 
 
-  it "should create a fixture" do 
-    JsFixtures.create :test, :type => :html do |f|
-    end
-
-    JsFixtures.get_location(:test).should include("#{@dir}/test.html")
-  end
-
-
   context "basic fixture" do
     before(:all) do 
       JsFixtures.create :test, :type => :html do |f|
@@ -24,6 +16,14 @@ describe "Html fixtures" do
 
       JsFixtures.generate_all
       @fixture = File.read JsFixtures.get_location(:test)
+    end
+
+    after(:all) do
+      FileUtils.remove_entry_secure File.dirname(JsFixtures.get_location(:test))
+    end
+
+    it "should include test in location" do
+      JsFixtures.get_location(:test).should include("/test.html")
     end
 
     it "should have moogle script" do 
