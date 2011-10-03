@@ -5,24 +5,12 @@ require 'rspec'
 
 
 describe "Html fixtures" do 
-  before(:all) do 
-    @dir = Dir.mktmpdir
-
-    JsFixtures.config :html do |config|
-      # path where fixtures get generated
-      config.local_fixture_path = @dir 
-    end
-  end
-
-  after(:all) do
-    FileUtils.remove_entry_secure @dir
-  end
 
   it "should create a fixture" do 
     JsFixtures.create :test, :type => :html do |f|
     end
 
-    JsFixtures.get_location(:test).should == "#{@dir}/test.html"
+    JsFixtures.get_location(:test).should include("#{@dir}/test.html")
   end
 
 

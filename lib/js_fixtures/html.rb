@@ -1,4 +1,5 @@
 require 'erb'
+require 'tmpdir'
 
 module JsFixtures
   class HTML < Base
@@ -6,7 +7,8 @@ module JsFixtures
     @template = File.join File.dirname(__FILE__), "../../template/html_template.html.erb"
 
     class << self
-      attr_reader :local_fixture_path, :type, :template
+      attr_accessor :local_fixture_path
+      attr_reader  :type, :template
 
       def type
         @type.to_sym
@@ -19,10 +21,6 @@ module JsFixtures
       def template=(template)
         @template = template
       end
-
-      def local_fixture_path=(fixture_path)
-        @local_fixture_path = fixture_path
-      end
     end
 
     attr_accessor :scripts, :pre_scripts, :post_scripts
@@ -32,6 +30,7 @@ module JsFixtures
       @scripts  =  config[:scripts]  ||= []
       @pre_scripts =  config[:settings] ||= "" 
       @post_scripts =  config[:post_scripts] ||= "" 
+
       set_fixture_path
       @location = @fixture_path
     end
@@ -44,6 +43,7 @@ module JsFixtures
     end
 
     def set_fixture_path
+      self.class.local_fixture_path ||= Dir.mktmpdir
       @fixture_path = "#{self.class.local_fixture_path}/#{@name}.html"
     end
 
