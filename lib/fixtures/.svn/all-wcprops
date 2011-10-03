@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/18494/JS/trunk/insight-tags/test/functional/support/fixtures
+END
+html.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/18282/JS/trunk/insight-tags/test/functional/support/fixtures/html.rb
+END
+html_s3.rb
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/18219/JS/trunk/insight-tags/test/functional/support/fixtures/html_s3.rb
+END
+s3_upload.rb
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/!svn/ver/18219/JS/trunk/insight-tags/test/functional/support/fixtures/s3_upload.rb
+END
+base.rb
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/!svn/ver/18494/JS/trunk/insight-tags/test/functional/support/fixtures/base.rb
+END
