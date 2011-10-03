@@ -1,6 +1,6 @@
 
 module JsFixtures
-  PATH = File.join(File.dirname(__FILE__), "fixtures")
+  PATH = File.join(File.dirname(__FILE__), "js_fixtures")
   require "#{PATH}/s3_upload.rb"
   require "#{PATH}/base.rb"
   require "#{PATH}/html.rb"
