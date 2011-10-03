@@ -21,9 +21,6 @@ Usage
     require 'js_fixtures'
     
     JsFixtures.config :html do |config|
-      # override the default html template (optional)
-      config.template = "/templates/html_template.html.erb" 
-
       # path where fixtures get generated
       config.local_fixture_path = "test/functional/fixtures/"
     end
@@ -69,7 +66,7 @@ By default html fixtures and html_s3 fixtures use an html template that accepts 
 
 
 ### Generating Fixtures 
-After you've defined all your fixtures and are ready to generate them. This will call generate() on every fixture that has been created so far.
+After you have defined your fixtures and are ready to generate them. This will call generate() on every fixture that has been created so far.
 
     JsFixtures.generate_all
 
