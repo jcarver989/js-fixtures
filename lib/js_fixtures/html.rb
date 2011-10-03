@@ -31,20 +31,19 @@ module JsFixtures
       @pre_scripts =  config[:settings] ||= "" 
       @post_scripts =  config[:post_scripts] ||= "" 
 
-      set_fixture_path
-      @location = @fixture_path
+      set_location
     end
 
     def generate
-      file = File.open(@fixture_path, 'w')
+      file = File.open(@location, 'w')
       file.syswrite(render_template())
       @path = File.expand_path(file.path)
       file.close
     end
 
-    def set_fixture_path
+    def set_location
       self.class.local_fixture_path ||= Dir.mktmpdir
-      @fixture_path = "#{self.class.local_fixture_path}/#{@name}.html"
+      @location = "#{self.class.local_fixture_path}/#{@name}.html"
     end
 
     def clone
