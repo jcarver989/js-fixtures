@@ -11,4 +11,6 @@ Gem::Specification.new do |spec|
   spec.files += Dir.glob("lib/**/*")
   spec.add_dependency("sinatra")
   spec.add_dependency("right_aws")
+
+  spec.add_development_dependency("rspec")
 end
