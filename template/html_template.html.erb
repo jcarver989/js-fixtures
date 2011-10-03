@@ -1,0 +1,19 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <script type="text/javascript">
+      <%= pre_scripts  %>
+    </script>
+
+    <% scripts.each do |script| %>
+      <script type="text/javascript" src="<%=script %>"></script>
+    <% end %>
+
+    <script type="text/javascript">
+      <%= post_scripts %>
+    </script>
+  </head>
+  <body>
+  </body>
+</html>
+
