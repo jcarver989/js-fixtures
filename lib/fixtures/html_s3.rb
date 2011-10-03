@@ -22,12 +22,16 @@ module JsFixtures
       puts "Generating Test Fixture: #{@name}"
       super
       puts "Uploading Fixture: #{@path} to S3"
-      upload_html_file(@path, "#{self.class.s3_upload_url}/#{@name}.html") 
+      upload_html_file(@path, "#{self.class.s3_upload_url}/#{@filename}") 
     end
 
     def set_location
       set_fixture_path
-      @location = "#{self.class.s3_access_url}/#{@name}.html"
+      # Number of seconds since 1970-01-01 00:00:00 UTC
+      # to avoid test collisions from multiple machines
+      suffix = Time.now.strftime("%s")
+      @filename = "#{@name}-#{suffix}.html"
+      @location = "#{self.class.s3_access_url}/#{@filename}"
     end
 
   end
