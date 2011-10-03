@@ -3,6 +3,7 @@ require 'erb'
 module JsFixtures
   class HTML < Base
     @type = :html
+    @template = File.join File.dirname(__FILE__), "../../template/html_template.html.erb"
 
     class << self
       attr_reader :local_fixture_path, :type, :template

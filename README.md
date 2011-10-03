@@ -21,7 +21,7 @@ Usage
     require 'js_fixtures'
     
     JsFixtures.config :html do |config|
-      # location for html template
+      # override the default html template (optional)
       config.template = "/templates/html_template.html.erb" 
 
       # path where fixtures get generated
@@ -33,9 +33,6 @@ Usage
     require 'js_fixtures'
     
     JsFixtures.config :html_s3 do |config|
-      # location for html template
-      config.template = "/templates/html_template.html.erb" 
-
       # path where fixtures get generated
       config.local_fixture_path = "test/functional/fixtures/"
 
@@ -45,6 +42,7 @@ Usage
 
 
 ### Creating Fixtures
+By default html fixtures and html_s3 fixtures use an html template that accepts an array of scripts to load in addition to optional Javascript code to execute before/after loading these scripts
 
     JsFixtures.create :base_fixture, :type => :html_s3 do |f|
       f.pre_scripts <<-PRE
@@ -76,9 +74,13 @@ After you've defined all your fixtures and are ready to generate them. This will
     JsFixtures.generate_all
 
 
-And in your tests:
+An example test using rspec + capybara :
 
-fixture_location = JsFixtures.get :with_some_settings
+    it "should do something" do 
+      fixture_location = JsFixtures.get :with_some_settings
+      page.visit(fixture_location)
+      page.should have_xpath('//table/tr')
+    end
 
 ### Custom Fixture Types
     
