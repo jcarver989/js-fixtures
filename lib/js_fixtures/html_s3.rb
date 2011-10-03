@@ -3,6 +3,7 @@ module JsFixtures
     include S3Upload
 
     @type = :html_s3 
+    @template = File.join File.dirname(__FILE__), "../../template/html_template.html.erb"
 
     class << self
       attr_reader :s3_upload_url, :s3_access_url
