@@ -7,6 +7,7 @@ module S3Upload
   HTML_HEADERS = {"Content-Type" => "text/html" }
 
   def upload_html_file(file_path, s3_path)
+    puts "Uploading from #{file_path} to #{s3_path}"
     uploader = RightAws::S3.new(AWS_KEY, AWS_SECRET_KEY)
     bucket, key = s3_path.split(":")
     bucket = uploader.bucket(bucket)

@@ -12,9 +12,7 @@ module JsFixtures
         if config[:type]
           @@fixtures << create_p(config[:type], name, config)
         elsif config[:parent]
-          fixture = get_by_name(config[:parent]).clone
-          fixture.name = name 
-          fixture.set_location
+          fixture = get_by_name(config[:parent]).clone(name)
           @@fixtures << fixture 
         else
           raise "need either :parent or :type to create fixture"
